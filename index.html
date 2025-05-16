@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wisata Kuliner Nusantara</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .food-card {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .food-card:hover {
+            transform: scale(1.03);
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 2px solid #555;
+            padding: 20px;
+            z-index: 1000;
+            max-width: 400px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            animation: fadeIn 0.4s ease;
+        }
+        .popup h3 {
+            margin-top: 0;
+        }
+        .popup img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .popup-close {
+            float: right;
+            cursor: pointer;
+            font-size: 20px;
+            margin-top: -10px;
+            margin-right: -10px;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.4);
+            z-index: 999;
+            display: none;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+    <script>
+        let currentPopup = null;
+        function openPopup(id) {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('popup-' + id).style.display = 'block';
+            currentPopup = id;
+        }
+
+        function closePopup(id) {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('popup-' + id).style.display = 'none';
+            currentPopup = null;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>🍽️ Wisata Kuliner Nusantara</h1>
+        <p>Menjelajahi cita rasa khas dari berbagai daerah di Indonesia</p>
+    </header>
+
+    <section class="media-section">
+        <h2>🎥 Video: Wisata Kuliner Nusantara</h2>
+        <iframe width="60%" height="315"
+            src="https://www.youtube.com/embed/3h2OLLUchNI?autoplay=1&mute=1"
+            title="Wisata Kuliner Nusantara"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen>
+        </iframe>
+    </section>
+
+
+    <section class="media-section">
+        <h2>🎵 Musik Latar Tradisional</h2>
+        <audio controls>
+            <source src="sunda.mp3" type="audio/mpeg">
+            Browser Anda tidak mendukung audio.
+        </audio>
+    </section>
+    
+    <div class="section-break">
+        <h2>Makanan Daerah</h2>
+    </div>
+    
+    <section class="food-container">
+        <div class="food-card" onclick="openPopup('mie-aceh')">
+            <img src="mie-aceh.jpg" alt="Mie Aceh">
+            <div class="description">
+              <h3>Mie Aceh (Aceh)</h3>
+              <p>Mi kuning pedas dengan rasa kari yang kuat, disajikan dengan daging atau seafood.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('bika-ambon')">
+            <img src="bika-ambon.jpg" alt="Bika Ambon">
+            <div class="description">
+                <h3>Bika Ambon (Sumatera Utara)</h3>
+                <p>Kue bertekstur bersarang dengan aroma daun jeruk, khas Medan, Sumatera Utara.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('rendang')">
+            <img src="rendang.jpg" alt="Rendang">
+            <div class="description">
+                <h3>Rendang (Sumatera Barat)</h3>
+                <p>Masakan daging khas Minangkabau yang mendunia karena cita rasanya yang kaya rempah.</p>
+            </div>
+        </div>
+        
+        <div class="food-card" onclick="openPopup('gulai-ikan-patin')">
+            <img src="gulai-ikan-patin.jpg" alt="Gulai Ikan Patin">
+            <div class="description">
+                <h3>Gulai Ikan Patin (Jambi)</h3>
+                <p>Hidangan ikan patin dalam kuah gulai kuning yang kaya rempah dan santan, khas Jambi.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('pendap')">
+            <img src="pendap.jpg" alt="Pendap">
+            <div class="description">
+                <h3>Pendap (Bengkulu)</h3>
+                <p>Ikan yang dibumbui dan dibungkus daun talas, kemudian dikukus, khas Bengkulu.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('gulai-belacan')">
+            <img src="gulai-belacan.jpg" alt="Gulai Belacan">
+            <div class="description">
+                <h3>Gulai Belacan (Riau)</h3>
+                <p>Hidangan udang dalam kuah santan berbumbu terasi yang kaya rasa, khas Riau.</p>
+            </div>
+        </div>
+        
+        <div class="food-card" onclick="openPopup('otak-otak-bakar')">
+            <img src="otak-otak-bakar.jpg" alt="Otak-otak Bakar">
+            <div class="description">
+                <h3>Otak-otak Bakar (Kepulauan Riau)</h3>
+                <p>Olahan ikan tenggiri yang dibungkus daun pisang dan dibakar, disajikan dengan saus kacang.</p>
+            </div>
+        </div>
+        
+        <div class="food-card" onclick="openPopup('pempek')">
+            <img src="pempek.jpg" alt="Pempek">
+            <div class="description">
+              <h3>Pempek (Palembang)</h3>
+              <p>Ikan dan sagu yang digoreng, disajikan dengan cuko khas Palembang yang asam dan pedas.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('mie-bangka')">
+            <img src="mie-bangka.jpg" alt="Mie Bangka">
+            <div class="description">
+                <h3>Mie Bangka (Bangka Belitung)</h3>
+                <p>Mie kuning dengan topping ayam cincang dan kuah kaldu, disajikan dengan acar dan sambal.</p>
+            </div>
+        </div>
+        
+        <div class="food-card" onclick="openPopup('seruit')">
+            <img src="seruit.jpg" alt="Seruit">
+            <div class="description">
+                <h3>Seruit (Lampung)</h3>
+                <p>Ikan bakar yang disajikan dengan sambal terasi dan lalapan, khas masyarakat Lampung.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('sate-bandeng')">
+            <img src="sate-bandeng.jpg" alt="Sate Bandeng">
+            <div class="description">
+                <h3>Sate Bandeng (Banten)</h3>
+                <p>Ikan bandeng tanpa duri yang diolah dengan bumbu khas, lalu dibakar seperti sate.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('kerak-telor')">
+            <img src="kerak-telor.jpg" alt="Kerak Telor">
+            <div class="description">
+                <h3>Kerak Telor (Jakarta)</h3>
+                <p>Telur bebek, ketan, dan serundeng khas Betawi yang dimasak dengan arang.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('serabi')">
+            <img src="serabi.jpg" alt="Serabi">
+            <div class="description">
+                <h3>Serabi (Jawa Barat)</h3>
+                <p>Kue tradisional berbahan dasar tepung beras dan santan, dibakar di atas tungku tanah liat.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('lumpia')">
+            <img src="lumpia.jpg" alt="Lumpia">
+            <div class="description">
+                <h3>Lumpia (Jawa Tengah)</h3>
+                <p>Gorengan berisi rebung, telur, dan daging ayam atau udang, khas Semarang.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('gudeg')">
+            <img src="gudeg.jpg" alt="Gudeg">
+            <div class="description">
+              <h3>Gudeg (Yogyakarta)</h3>
+              <p>Makanan khas Yogyakarta yang terbuat dari nangka muda dan dimasak dengan santan.</p>
+            </div>
+        </div>
+
+
+
+
+        
+        <div class="food-card" onclick="openPopup('rujak-cingur')">
+            <img src="rujak-cingur.jpg" alt="Rujak Cingur">
+            <div class="description">
+                <h3>Rujak Cingur (Jawa Timur)</h3>
+                <p>Salad khas Surabaya dengan campuran sayur, buah, dan cingur (hidung sapi), disiram bumbu petis.</p>
+            </div>
+        </div>
+        
+        <div class="food-card" onclick="openPopup('ayam-betutu')">
+            <img src="ayam-betutu.jpg" alt="Ayam Betutu">
+            <div class="description">
+                <h3>Ayam Betutu (Bali)</h3>
+                <p>Ayam utuh yang diisi dan dilumuri bumbu khas Bali, lalu dipanggang atau dikukus lama.</p>
+            </div>
+        </div>
+        
+        <div class="food-card" onclick="openPopup('ayam-taliwang')">
+            <img src="ayam-taliwang.jpg" alt="Ayam Taliwang">
+            <div class="description">
+                <h3>Ayam Taliwang (NTB)</h3>
+                <p>Ayam kampung muda yang dibakar dan dibumbui dengan sambal khas pedas gurih dari Lombok.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('catemak-jagung')">
+            <img src="catemak-jagung.jpg" alt="Catemak Jagung">
+            <div class="description">
+                <h3>Catemak Jagung (NTT)</h3>
+                <p>Sup sehat berisi jagung, kacang-kacangan, dan sayur khas Nusa Tenggara Timur.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('bubur-pedas-sambas')">
+            <img src="bubur-pedas-sambas.jpg" alt="Bubur Pedas Sambas">
+            <div class="description">
+                <h3>Bubur Pedas Sambas (Kalbar)</h3>
+                <p>Bubur khas Sambas berbahan beras tumbuk dan sayuran, bercita rasa gurih pedas.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('juhu-singkah')">
+            <img src="juhu-singkah.jpg" alt="Juhu Singkah">
+            <div class="description">
+                <h3>Juhu Singkah (Kalteng)</h3>
+                <p>Masakan khas Dayak yang berbahan dasar umbut rotan muda, dimasak dengan santan dan rempah.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('soto-banjar')">
+            <img src="soto-banjar.jpg" alt="Soto Banjar">
+            <div class="description">
+                <h3>Soto Banjar (Kalsel)</h3>
+                <p>Soto khas Banjarmasin dengan kuah bening, ayam suwir, dan rempah harum seperti kayu manis dan cengkeh.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('ayam-cicane')">
+            <img src="ayam-cicane.jpg" alt="Ayam Cicane">
+            <div class="description">
+                <h3>Ayam Cicane (Kaltim)</h3>
+                <p>Masakan khas suku Dayak dengan ayam kampung dimasak dalam bumbu khas dan daun singkong.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('kepiting-soka')">
+            <img src="kepiting-soka.jpg" alt="Kepiting Soka">
+            <div class="description">
+                <h3>Kepiting Soka (Kaltara)</h3>
+                <p>Kepiting lunak yang bisa dimakan seluruhnya, digoreng renyah atau dimasak saus asam manis.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('sup-konro')">
+            <img src="sup-konro.jpg" alt="Sup Konro">
+            <div class="description">
+                <h3>Sup Konro (Sulsel)</h3>
+                <p>Sup iga sapi dengan kuah hitam pekat dari kluwak dan rempah-rempah khas Bugis-Makassar.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('sup-ikan-jantung-pisang')">
+            <img src="sup-ikan-jantung-pisang.jpg" alt="Sup Ikan Jantung Pisang">
+            <div class="description">
+                <h3>Sup Ikan Jantung Pisang (Sulteng)</h3>
+                <p>Sup segar khas Sulawesi Tengah yang menggabungkan rasa gurih ikan dan jantung pisang muda.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('lapa-lapa')">
+            <img src="lapa-lapa.jpg" alt="Lapa-lapa">
+            <div class="description">
+                <h3>Lapa-lapa (Sultra)</h3>
+                <p>Nasi ketan gurih yang dibungkus daun pisang, disajikan bersama ikan bakar atau lauk khas Sulawesi Tenggara.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('binte-biluhuta')">
+            <img src="binte-biluhuta.jpg" alt="Binte Biluhuta">
+            <div class="description">
+                <h3>Binte Biluhuta (Gorontalo)</h3>
+                <p>Sup jagung khas Gorontalo yang disajikan dengan ikan cakalang dan kelapa parut.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('tinutuan')">
+            <img src="tinutuan.jpg" alt="Tinutuan">
+            <div class="description">
+                <h3>Tinutuan (Sulut)</h3>
+                <p>Bubur Manado khas Sulawesi Utara yang dibuat dari beras dan aneka sayuran.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('ikan-asar')">
+            <img src="ikan-asar.jpg" alt="Ikan Asar">
+            <div class="description">
+                <h3>Ikan Asar (Maluku)</h3>
+                <p>Ikan cakalang asap khas Maluku yang biasanya disantap dengan nasi panas dan sambal colo-colo.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('gohu-ikan')">
+            <img src="gohu-ikan.jpg" alt="Gohu Ikan">
+            <div class="description">
+                <h3>Gohu Ikan (Malut)</h3>
+                <p>Sashimi khas Ternate yang menggunakan ikan mentah segar yang dimarinasi dengan jeruk nipis dan bumbu rempah.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('ikan-bakar-manokwari')">
+            <img src="ikan-bakar-manokwari.jpg" alt="Ikan Bakar Manokwari">
+            <div class="description">
+                <h3>Ikan Bakar Manokwari (Papua Barat)</h3>
+                <p>Ikan bakar khas Manokwari disajikan dengan sambal mentah cabai dan bawang merah di atasnya.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('kue-sagu')">
+            <img src="kue-sagu.jpg" alt="Kue Sagu">
+            <div class="description">
+                <h3>Kue Sagu (Papua Tengah)</h3>
+                <p>Kue tradisional dari tepung sagu yang dipanggang atau dibakar dalam perapian tanah liat.</p>
+            </div>
+        </div>
+        
+        <div class="food-card" onclick="openPopup('papeda')">
+            <img src="papeda.jpg" alt="Papeda">
+            <div class="description">
+                <h3>Papeda (Papua Timur)</h3>
+                <p>Bubur sagu yang kenyal dan biasanya disajikan dengan ikan kuah kuning.</p>
+            </div>
+        </div>
+
+        <div class="food-card" onclick="openPopup('nasi-goreng')">
+            <img src="nasi-goreng.jpg" alt="Nasi Goreng">
+            <div class="description">
+                <h3>Nasi Goreng (Nasional)</h3>
+                <p>Nasi goreng adalah salah satu makanan paling umum dan disukai di seluruh Indonesia, sering dijuluki sebagai "makanan sejuta umat".</p>
+            </div>
+        </div>
+    </section>
+    
+    <div id="overlay" class="overlay" onclick="closePopup(currentPopup)"></div>
+    
+    <div id="popup-mie-aceh" class="popup">
+        <span class="popup-close" onclick="closePopup('mie-aceh')">&times;</span>
+        <img src="mie-aceh.jpg" alt="Mie Aceh">
+        <h3>Mie Aceh</h3>
+        <p>Resep: Mi kuning, daging sapi atau seafood, cabai, bawang merah, bawang putih, dan rempah kari.</p>
+    </div>
+
+    <div id="popup-bika-ambon" class="popup">
+        <span class="popup-close" onclick="closePopup('bika-ambon')">&times;</span>
+        <img src="bika-ambon.jpg" alt="Bika Ambon">
+        <h3>Bika Ambon</h3>
+        <p>Resep: Tepung sagu, gula pasir, kuning telur, santan kental, air kelapa, daun jeruk purut, kunyit bubuk, dan ragi instan. Campur bahan, diamkan hingga mengembang, lalu panggang hingga matang.</p>
+    </div>
+
+    <div id="popup-rendang" class="popup">
+        <span class="popup-close" onclick="closePopup('rendang')">&times;</span>
+        <img src="rendang.jpg" alt="Rendang">
+        <h3>Rendang</h3>
+        <p>Resep: Daging sapi, santan, serai, lengkuas, bawang merah, bawang putih, dan cabai.</p>
+    </div>
+
+    <div id="popup-gulai-ikan-patin" class="popup">
+        <span class="popup-close" onclick="closePopup('gulai-ikan-patin')">&times;</span>
+        <img src="gulai-ikan-patin.jpg" alt="Gulai Ikan Patin">
+        <h3>Gulai Ikan Patin</h3>
+        <p>Resep: Ikan patin, santan, bawang merah, bawang putih, kunyit, lengkuas, serai, daun salam, dan cabai. Tumis bumbu halus, tambahkan santan dan ikan, masak hingga matang dan bumbu meresap.</p>
+    </div>
+
+    <div id="popup-pendap" class="popup">
+        <span class="popup-close" onclick="closePopup('pendap')">&times;</span>
+        <img src="pendap.jpg" alt="Pendap">
+        <h3>Pendap</h3>
+        <p>Resep: Ikan kembung, kelapa parut, bawang merah, bawang putih, cabai, kunyit, daun salam, daun jeruk, dan daun talas. Campur bumbu, balurkan pada ikan, bungkus dengan daun talas, dan kukus hingga matang.</p>
+    </div>
+
+    <div id="popup-gulai-belacan" class="popup">
+        <span class="popup-close" onclick="closePopup('gulai-belacan')">&times;</span>
+        <img src="gulai-belacan.jpg" alt="Gulai Belacan">
+        <h3>Gulai Belacan</h3>
+        <p>Resep: Udang ukuran sedang, santan, air asam jawa, daun jeruk, garam, gula, merica, dan bumbu halus dari bawang merah, bawang putih, kemiri, terasi goreng, serta cabai merah. Tumis bumbu halus, tambahkan santan dan udang, masak hingga matang.</p>
+    </div>
+    
+    <div id="popup-otak-otak-bakar" class="popup">
+        <span class="popup-close" onclick="closePopup('otak-otak-bakar')">&times;</span>
+        <img src="otak-otak-bakar.jpg" alt="Otak-otak Bakar">
+        <h3>Otak-otak Bakar</h3>
+        <p>Resep: Daging ikan tenggiri giling, tepung sagu, putih telur, santan kental, daun bawang, bawang merah, bawang putih, garam, dan penyedap rasa. Campur bahan, bungkus dengan daun pisang, dan bakar hingga matang. Sajikan dengan saus kacang dari kacang tanah, cabai, kemiri, bawang putih, air, dan santan.</p>
+    </div>
+    
+    <div id="popup-pempek" class="popup">
+        <span class="popup-close" onclick="closePopup('pempek')">&times;</span>
+        <img src="pempek.jpg" alt="Pempek">
+        <h3>Pempek</h3>
+        <p>Resep: Ikan tenggiri, sagu, telur, bawang putih, dan cuko khas Palembang.</p>
+    </div>
+
+    <div id="popup-mie-bangka" class="popup">
+        <span class="popup-close" onclick="closePopup('mie-bangka')">&times;</span>
+        <img src="mie-bangka.jpg" alt="Mie Bangka">
+        <h3>Mie Bangka</h3>
+        <p>Resep: Mie telur, ayam cincang, bawang putih, bawang merah, kecap manis, saus tiram, garam, merica, dan kaldu ayam. Tumis bumbu, masukkan ayam, tambahkan bumbu lainnya, masak hingga matang. Sajikan mie dengan topping ayam dan kuah kaldu.</p>
+    </div>
+
+    <div id="popup-seruit" class="popup">
+        <span class="popup-close" onclick="closePopup('seruit')">&times;</span>
+        <img src="seruit.jpg" alt="Seruit">
+        <h3>Seruit</h3>
+        <p>Resep: Ikan nila atau jenis lain, dibersihkan dan dibakar hingga matang. Sambal terasi dibuat dari cabai merah, bawang merah, terasi, garam, gula, dan air jeruk limau yang dihaluskan. Sajikan ikan bakar dengan sambal dan lalapan seperti daun singkong dan mentimun.</p>
+    </div>
+
+    <div id="popup-sate-bandeng" class="popup">
+        <span class="popup-close" onclick="closePopup('sate-bandeng')">&times;</span>
+        <img src="sate-bandeng.jpg" alt="Sate Bandeng">
+        <h3>Sate Bandeng</h3>
+        <p>Resep: Ikan bandeng, santan, bawang merah, bawang putih, kelapa parut sangrai, gula merah, garam, dan rempah-rempah. Daging ikan diambil, dihaluskan, dicampur bumbu, lalu dimasukkan kembali ke kulit ikan, dipanggang hingga matang.</p>
+    </div>
+
+    <div id="popup-kerak-telor" class="popup">
+        <span class="popup-close" onclick="closePopup('kerak-telor')">&times;</span>
+        <img src="kerak-telor.jpg" alt="Kerak Telor">
+        <h3>Kerak Telor</h3>
+        <p>Resep: Beras ketan putih, telur bebek, ebi, bawang merah goreng, kelapa parut sangrai, dan bumbu halus (merica, cabai kering, garam). Tumis bahan, masak di atas wajan tanpa minyak hingga matang, sajikan dengan serundeng.</p>
+    </div>
+
+    <div id="popup-serabi" class="popup">
+        <span class="popup-close" onclick="closePopup('serabi')">&times;</span>
+        <img src="serabi.jpg" alt="Serabi">
+        <h3>Serabi</h3>
+        <p>Resep: Tepung beras, santan, ragi instan, dan garam. Campur bahan, diamkan hingga mengembang. Tuang ke wajan kecil, masak tanpa minyak hingga matang, bisa disajikan polos atau dengan topping kinca (gula merah cair).</p>
+    </div>
+    
+    <div id="popup-lumpia" class="popup">
+        <span class="popup-close" onclick="closePopup('lumpia')">&times;</span>
+        <img src="lumpia.jpg" alt="Lumpia">
+        <h3>Lumpia</h3>
+        <p>Resep: Rebung, telur, ayam cincang, bawang putih, kecap manis, merica, dan kulit lumpia. Tumis isian hingga matang, bungkus dengan kulit lumpia, goreng hingga keemasan.</p>
+    </div>
+
+    <div id="popup-gudeg" class="popup">
+        <span class="popup-close" onclick="closePopup('gudeg')">&times;</span>
+        <img src="gudeg.jpg" alt="Gudeg">
+        <h3>Gudeg</h3>
+        <p>Resep: Nangka muda, santan, gula merah, bawang merah, bawang putih, dan daun salam.</p>
+    </div>
+    
+    <div id="popup-rujak-cingur" class="popup">
+        <span class="popup-close" onclick="closePopup('rujak-cingur')">&times;</span>
+        <img src="rujak-cingur.jpg" alt="Rujak Cingur">
+        <h3>Rujak Cingur</h3>
+        <p>Resep: Cingur sapi rebus, tahu, tempe, lontong, kangkung, tauge, mentimun, nanas, bengkuang, bumbu petis (petis udang, kacang tanah, cabai, bawang putih, gula merah, garam), dan kerupuk. Campur bahan, siram bumbu petis, sajikan.</p>
+    </div>
+    
+    <div id="popup-ayam-betutu" class="popup">
+        <span class="popup-close" onclick="closePopup('ayam-betutu')">&times;</span>
+        <img src="ayam-betutu.jpg" alt="Ayam Betutu">
+        <h3>Ayam Betutu</h3>
+        <p>Resep: Ayam utuh, bumbu base genep khas Bali, dan daun pisang untuk membungkus saat dipanggang.</p>
+    </div>
+
+    <div id="popup-ayam-taliwang" class="popup">
+        <span class="popup-close" onclick="closePopup('ayam-taliwang')">&times;</span>
+        <img src="ayam-taliwang.jpg" alt="Ayam Taliwang">
+        <h3>Ayam Taliwang</h3>
+        <p>Resep: Ayam kampung muda, cabai merah keriting, bawang putih, bawang merah, terasi, tomat, gula merah, garam. Tumis bumbu, oleskan ke ayam, lalu bakar hingga matang sambil diolesi sisa bumbu.</p>
+    </div>
+
+    <div id="popup-catemak-jagung" class="popup">
+        <span class="popup-close" onclick="closePopup('catemak-jagung')">&times;</span>
+        <img src="catemak-jagung.jpg" alt="Catemak Jagung">
+        <h3>Catemak Jagung</h3>
+        <p>Resep: Jagung pipil, kacang tanah, kacang hijau, daun pepaya, labu kuning, bawang merah, bawang putih, garam. Rebus semua bahan hingga empuk, tambahkan garam dan bawang sebagai penyedap.</p>
+    </div>
+
+    <div id="popup-bubur-pedas-sambas" class="popup">
+        <span class="popup-close" onclick="closePopup('bubur-pedas-sambas')">&times;</span>
+        <img src="bubur-pedas-sambas.jpg" alt="Bubur Pedas Sambas">
+        <h3>Bubur Pedas Sambas</h3>
+        <p>Resep: Beras sangrai tumbuk, sayur daun kesum, pakis, kacang panjang, wortel, bumbu halus (bawang merah, bawang putih, kunyit, serai, lada, kemiri, cabai). Rebus semua bahan hingga kental, tambahkan ikan teri atau ebi goreng sebagai pelengkap.</p>
+    </div>
+
+    <div id="popup-juhu-singkah" class="popup">
+        <span class="popup-close" onclick="closePopup('juhu-singkah')">&times;</span>
+        <img src="juhu-singkah.jpg" alt="Juhu Singkah">
+        <h3>Juhu Singkah</h3>
+        <p>Resep: Umbut rotan muda, santan, bawang merah, bawang putih, cabai, lengkuas, daun salam, garam. Rebus umbut rotan, lalu masak dengan bumbu dan santan hingga empuk dan meresap.</p>
+    </div>
+
+    <div id="popup-soto-banjar" class="popup">
+        <span class="popup-close" onclick="closePopup('soto-banjar')">&times;</span>
+        <img src="soto-banjar.jpg" alt="Soto Banjar">
+        <h3>Soto Banjar</h3>
+        <p>Resep: Ayam, kayu manis, cengkeh, kapulaga, pala, bawang putih, bawang merah, daun bawang, dan soun. Rebus ayam dengan bumbu hingga empuk, suwir, sajikan dengan kuah, perkedel, dan telur rebus.</p>
+    </div>
+
+    <div id="popup-ayam-cicane" class="popup">
+        <span class="popup-close" onclick="closePopup('ayam-cicane')">&times;</span>
+        <img src="ayam-cicane.jpg" alt="Ayam Cicane">
+        <h3>Ayam Cicane</h3>
+        <p>Resep: Ayam kampung, daun singkong, bawang merah, bawang putih, lengkuas, cabai, garam. Tumis bumbu, masukkan ayam, tambahkan air, masak hingga empuk bersama daun singkong.</p>
+    </div>
+
+    <div id="popup-kepiting-soka" class="popup">
+        <span class="popup-close" onclick="closePopup('kepiting-soka')">&times;</span>
+        <img src="kepiting-soka.jpg" alt="Kepiting Soka">
+        <h3>Kepiting Soka</h3>
+        <p>Resep: Kepiting soka, bawang putih, bawang bombai, saus tiram, saus tomat, cabai merah, gula, garam. Tumis bumbu, masukkan kepiting, aduk rata hingga bumbu meresap. Bisa juga digoreng tepung.</p>
+    </div>
+
+    <div id="popup-sup-konro" class="popup">
+        <span class="popup-close" onclick="closePopup('sup-konro')">&times;</span>
+        <img src="sup-konro.jpg" alt="Sup Konro">
+        <h3>Sup Konro</h3>
+        <p>Resep: Iga sapi, kluwak, kayu manis, cengkeh, ketumbar, jintan, bawang merah, bawang putih, lengkuas, air asam jawa, garam. Rebus iga dengan bumbu hingga empuk dan kuah mengental.</p>
+    </div>
+
+    <div id="popup-sup-ikan-jantung-pisang" class="popup">
+        <span class="popup-close" onclick="closePopup('sup-ikan-jantung-pisang')">&times;</span>
+        <img src="sup-ikan-jantung-pisang.jpg" alt="Sup Ikan Jantung Pisang">
+        <h3>Sup Ikan Jantung Pisang</h3>
+        <p>Resep: Ikan kakap/tongkol, jantung pisang muda, bawang merah, bawang putih, jahe, daun kemangi, tomat, cabai rawit, air jeruk nipis. Tumis bumbu, tambahkan air, masukkan jantung pisang dan ikan, masak hingga matang.</p>
+    </div>
+
+    <div id="popup-lapa-lapa" class="popup">
+        <span class="popup-close" onclick="closePopup('lapa-lapa')">&times;</span>
+        <img src="lapa-lapa.jpg" alt="Lapa-lapa">
+        <h3>Lapa-lapa</h3>
+        <p>Resep: Beras ketan, santan, daun pandan, garam, daun pisang. Kukus ketan setengah matang, campur dengan santan dan garam, bungkus dengan daun pisang, kukus hingga matang. Sajikan dengan ikan asin atau ikan bakar.</p>
+    </div>
+
+    <div id="popup-binte-biluhuta" class="popup">
+        <span class="popup-close" onclick="closePopup('binte-biluhuta')">&times;</span>
+        <img src="binte-biluhuta.jpg" alt="Binte Biluhuta">
+        <h3>Binte Biluhuta</h3>
+        <p>Resep: Jagung manis pipil, ikan cakalang/tuna suwir, kelapa parut, daun bawang, daun kemangi, cabai rawit, air jeruk nipis. Rebus jagung, tambahkan ikan suwir, bumbu, dan kelapa parut. Sajikan hangat.</p>
+    </div>
+
+    <div id="popup-tinutuan" class="popup">
+        <span class="popup-close" onclick="closePopup('tinutuan')">&times;</span>
+        <img src="tinutuan.jpg" alt="Tinutuan">
+        <h3>Tinutuan</h3>
+        <p>Resep: Beras, labu kuning, singkong, jagung manis, bayam, kangkung, daun kemangi. Rebus semua bahan hingga menjadi bubur, sajikan dengan sambal dan ikan asin.</p>
+    </div>
+
+    <div id="popup-ikan-asar" class="popup">
+        <span class="popup-close" onclick="closePopup('ikan-asar')">&times;</span>
+        <img src="ikan-asar.jpg" alt="Ikan Asar">
+        <h3>Ikan Asar</h3>
+        <p>Resep: Ikan cakalang, garam, air jeruk nipis. Bersihkan ikan, lumuri garam dan jeruk, lalu diasap selama beberapa jam hingga kering dan wangi. Sajikan dengan sambal dan nasi hangat.</p>
+    </div>
+
+    <div id="popup-gohu-ikan" class="popup">
+        <span class="popup-close" onclick="closePopup('gohu-ikan')">&times;</span>
+        <img src="gohu-ikan.jpg" alt="Gohu Ikan">
+        <h3>Gohu Ikan</h3>
+        <p>Resep: Ikan tuna segar, bawang merah, cabai rawit, kemangi, air jeruk nipis, garam, minyak kelapa panas. Potong ikan kecil-kecil, siram jeruk dan garam, tambahkan bumbu dan minyak panas. Aduk rata dan sajikan.</p>
+    </div>
+
+    <div id="popup-ikan-bakar-manokwari" class="popup">
+        <span class="popup-close" onclick="closePopup('ikan-bakar-manokwari')">&times;</span>
+        <img src="ikan-bakar-manokwari.jpg" alt="Ikan Bakar Manokwari">
+        <h3>Ikan Bakar Manokwari</h3>
+        <p>Resep: Ikan tongkol/tuna, garam, jeruk nipis. Bakar ikan, taburi dengan sambal mentah (cabai rawit, bawang merah, garam, jeruk nipis), sajikan dengan nasi hangat.</p>
+    </div>
+
+    <div id="popup-kue-sagu" class="popup">
+        <span class="popup-close" onclick="closePopup('kue-sagu')">&times;</span>
+        <img src="kue-sagu.jpg" alt="Kue Sagu">
+        <h3>Kue Sagu</h3>
+        <p>Resep: Tepung sagu, kelapa parut, gula merah, sedikit air. Campur bahan, bentuk bulat pipih, panggang dalam wajan tanah atau oven hingga kering dan garing.</p>
+    </div>
+
+    <div id="popup-papeda" class="popup">
+        <span class="popup-close" onclick="closePopup('papeda')">&times;</span>
+        <img src="papeda.jpg" alt="Papeda">
+        <h3>Papeda</h3>
+        <p>Resep: Sagu, air panas, disajikan dengan ikan kuah kuning dan sayur pelengkap.</p>
+    </div>
+
+    <div id="popup-nasi-goreng" class="popup">
+        <span class="popup-close" onclick="closePopup('nasi-goreng')">&times;</span>
+        <img src="nasi-goreng.jpg" alt="Nasi Goreng">
+        <h3>Nasi Goreng</h3>
+        <p>Resep: Nasi putih, kecap manis, bawang putih, telur, cabai, dan bahan pelengkap seperti ayam atau udang.</p>
+    </div>
+
+    <footer>
+        <p>2025 Wisata Kuliner Nusantara</p>
+    </footer>
+</body>
+</html>
